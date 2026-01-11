@@ -14,10 +14,12 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve",
+    "baseUrl": ".",
     "paths": {
-      "ui-components": [
-        "./dist/ui-components"
-      ]
+      "@guan-ring/ui/button": ["projects/ui-components/button/public-api.ts"],
+      "@guan-ring/ui/input": ["projects/ui-components/input/public-api.ts"],
+      "@guan-ring/ui/types": ["projects/ui-components/types/index.ts"],
+      "ui-components": ["./dist/ui-components"]
     }
   },
   "angularCompilerOptions": {

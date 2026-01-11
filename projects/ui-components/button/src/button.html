@@ -1,3 +1,23 @@
-<div class="guang__ring__button-wrapper">
-  <span class="guang__ring__button-label"></span>
+<div class="guang__ring__button-wrapper flex items-center justify-center gap-2 w-full h-full">
+  @if (loading()) {
+    <gr-internal-spinner></gr-internal-spinner>
+  } @else {
+    @if (icon()?.position === 'left') {
+      <gr-internal-icon-display
+        [iconData]="icon()!"
+        [extraClass]="icon()?.class || ''"
+      ></gr-internal-icon-display>
+    }
+  }
+
+  <span class="guang__ring__label inline-flex items-center">
+    <ng-content></ng-content>
+  </span>
+
+  @if (!loading() && icon()?.position === 'right') {
+    <gr-internal-icon-display
+      [iconData]="icon()!"
+      [extraClass]="icon()?.class || ''"
+    ></gr-internal-icon-display>
+  }
 </div>
