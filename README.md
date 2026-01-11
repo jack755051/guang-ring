@@ -80,6 +80,32 @@ ng build ui-components
 npm test
 ```
 
+#### 4. Code Quality (程式碼品質)
+
+執行 ESLint 檢查：
+
+```bash
+npm run lint
+```
+
+自動修復 ESLint 問題：
+
+```bash
+npm run lint:fix
+```
+
+檢查 Prettier 格式：
+
+```bash
+npm run format:check
+```
+
+自動格式化程式碼：
+
+```bash
+npm run format
+```
+
 ---
 
 ## 📂 Project Structure (專案結構)
