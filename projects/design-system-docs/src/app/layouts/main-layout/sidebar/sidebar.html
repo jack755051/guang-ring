@@ -1,55 +1,76 @@
 <aside
-  class="flex flex-col border-r border-gray-800 bg-gray-950 h-full transition-all duration-300 ease-in-out relative"
+  class="flex flex-col border-r border-gray-800 bg-gray-950 h-full transition-all duration-300 ease-in-out relative group/sidebar"
   [class.w-64]="isOpen()"
   [class.w-20]="!isOpen()"
 >
-  <div class="h-16 flex items-center justify-between px-4 border-b border-gray-800/50 shrink-0">
-    <h2
-      class="text-xl font-bold text-primary tracking-wider whitespace-nowrap overflow-hidden transition-all duration-300"
-      [class.opacity-0]="!isOpen()"
-      [class.w-0]="!isOpen()"
-    >
-      GUAN RING
-    </h2>
+  <button
+    (click)="handleMenuClick()"
+    class="absolute -right-3 top-7 z-50 p-0.5 rounded-full border border-gray-700 bg-gray-900 text-gray-400 hover:text-white hover:bg-gray-800 cursor-pointer transition-all duration-200 shadow-sm"
+    [class.opacity-0]="!isOpen()"
+    [class.group-hover/sidebar:opacity-100]="true"
+    title="切換側邊欄"
+  >
+    @if (isOpen()) {
+      <ng-icon name="lucideChevronLeft" class="text-sm block"></ng-icon>
+    } @else {
+      <ng-icon name="lucideChevronRight" class="text-sm block"></ng-icon>
+    }
+  </button>
 
-    <button
-      (click)="handleMenuClick()"
-      class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
-    >
-      @if (isOpen()) {
-        <ng-icon name="lucideChevronLeft" class="text-xl"></ng-icon>
-      } @else {
-        <ng-icon name="lucideChevronRight" class="text-xl"></ng-icon>
-      }
-    </button>
+  <div
+    class="h-20 flex items-center border-b border-gray-800/50 shrink-0 transition-all duration-300 overflow-hidden whitespace-nowrap"
+    [class.px-6]="isOpen()"
+    [class.justify-center]="!isOpen()"
+    [class.px-0]="!isOpen()"
+  >
+    <div class="flex items-center gap-3">
+      <div class="flex items-center justify-center text-primary transition-all duration-300">
+        <ng-icon name="lucideMenu" class="text-2xl"></ng-icon>
+      </div>
+
+      <h2
+        class="text-xl font-bold text-gray-100 tracking-wider transition-all duration-300 origin-left"
+        [class.opacity-0]="!isOpen()"
+        [class.w-0]="!isOpen()"
+        [class.scale-95]="!isOpen()"
+      >
+        GUAN RING
+      </h2>
+    </div>
   </div>
 
-  <div class="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-6">
+  <div class="flex-1 overflow-y-auto py-6 px-3 flex flex-col gap-6 scrollbar-hide">
     @for (group of configGroup(); track $index) {
       <div class="flex flex-col gap-2">
-        @if (isOpen()) {
-          <h3
-            class="text-xs font-bold text-gray-500 uppercase tracking-widest px-2 animate-fade-in"
-          >
-            {{ group.title }}
-          </h3>
-        } @else {
-          <div class="h-px bg-gray-800 my-2 mx-2"></div>
-        }
+        <div
+          class="h-6 flex items-center px-2 transition-all duration-300"
+          [class.justify-center]="!isOpen()"
+        >
+          @if (isOpen()) {
+            <h3
+              class="text-xs font-bold text-gray-500 uppercase tracking-widest animate-fade-in whitespace-nowrap"
+            >
+              {{ group.title }}
+            </h3>
+          } @else {
+            <div class="w-8 h-px bg-gray-800"></div>
+          }
+        </div>
 
         <nav class="flex flex-col gap-1">
           @for (item of group.items; track item.route) {
             <a
               [routerLink]="item.route"
-              routerLinkActive="text-primary bg-primary/10 border-primary"
+              routerLinkActive="text-primary bg-primary/10 border-primary shadow-[0_0_15px_rgba(0,243,255,0.1)]"
               [routerLinkActiveOptions]="{ exact: true }"
-              class="group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-gray-100 transition-all border-l-2 border-transparent relative overflow-hidden"
+              class="group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800/50 hover:text-gray-100 transition-all border-l-2 border-transparent relative overflow-hidden"
               [title]="!isOpen() ? item.label : ''"
             >
               @if (item.icon) {
                 <ng-icon
                   [name]="item.icon"
-                  class="text-xl flex-shrink-0 transition-colors"
+                  class="text-xl flex-shrink-0 transition-colors duration-300"
+                  [class.mx-auto]="!isOpen()"
                 ></ng-icon>
               }
 
@@ -64,9 +85,12 @@
 
               @if (!isOpen()) {
                 <div
-                  class="absolute left-14 bg-gray-900 text-white text-xs px-2 py-1 rounded border border-gray-700 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none"
+                  class="absolute left-16 bg-gray-900 text-gray-100 text-xs px-2 py-1.5 rounded border border-gray-700 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none shadow-lg translate-x-2 group-hover:translate-x-0 duration-200"
                 >
                   {{ item.label }}
+                  <div
+                    class="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-2 bg-gray-900 border-l border-b border-gray-700 rotate-45"
+                  ></div>
                 </div>
               }
             </a>
@@ -79,9 +103,13 @@
   <div class="p-4 border-t border-gray-800 shrink-0">
     <button
       (click)="handleSettingsClick()"
-      class="flex items-center gap-3 w-full p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+      class="group flex items-center gap-3 w-full p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+      [class.justify-center]="!isOpen()"
     >
-      <ng-icon name="lucideSettings" class="text-xl shrink-0"></ng-icon>
+      <ng-icon
+        name="lucideSettings"
+        class="text-xl shrink-0 group-hover:rotate-90 transition-transform duration-500"
+      ></ng-icon>
       <span
         class="whitespace-nowrap transition-all duration-300 origin-left"
         [class.opacity-0]="!isOpen()"

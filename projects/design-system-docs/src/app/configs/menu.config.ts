@@ -7,12 +7,12 @@ export const MENU_CONFIG: SidebarConfig[] = [
     items: [
       {
         label: 'Button',
-        route: '/button',
+        route: '/button-demo',
         icon: 'lucideMousePointer2',
       },
       {
         label: 'Input',
-        route: '/input',
+        route: '/input-demo',
         icon: 'lucideType',
       },
     ],
@@ -22,7 +22,7 @@ export const MENU_CONFIG: SidebarConfig[] = [
     items: [
       {
         label: 'Dashboard',
-        route: '/dashboard',
+        route: '/dashboard-demo',
         icon: 'lucideLayoutDashboard',
       },
     ],
