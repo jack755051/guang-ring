@@ -1,0 +1,94 @@
+<aside
+  class="flex flex-col border-r border-gray-800 bg-gray-950 h-full transition-all duration-300 ease-in-out relative"
+  [class.w-64]="isOpen()"
+  [class.w-20]="!isOpen()"
+>
+  <div class="h-16 flex items-center justify-between px-4 border-b border-gray-800/50 shrink-0">
+    <h2
+      class="text-xl font-bold text-primary tracking-wider whitespace-nowrap overflow-hidden transition-all duration-300"
+      [class.opacity-0]="!isOpen()"
+      [class.w-0]="!isOpen()"
+    >
+      GUAN RING
+    </h2>
+
+    <button
+      (click)="handleMenuClick()"
+      class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+    >
+      @if (isOpen()) {
+        <ng-icon name="lucideChevronLeft" class="text-xl"></ng-icon>
+      } @else {
+        <ng-icon name="lucideChevronRight" class="text-xl"></ng-icon>
+      }
+    </button>
+  </div>
+
+  <div class="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-6">
+    @for (group of configGroup(); track $index) {
+      <div class="flex flex-col gap-2">
+        @if (isOpen()) {
+          <h3
+            class="text-xs font-bold text-gray-500 uppercase tracking-widest px-2 animate-fade-in"
+          >
+            {{ group.title }}
+          </h3>
+        } @else {
+          <div class="h-px bg-gray-800 my-2 mx-2"></div>
+        }
+
+        <nav class="flex flex-col gap-1">
+          @for (item of group.items; track item.route) {
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="text-primary bg-primary/10 border-primary"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-gray-100 transition-all border-l-2 border-transparent relative overflow-hidden"
+              [title]="!isOpen() ? item.label : ''"
+            >
+              @if (item.icon) {
+                <ng-icon
+                  [name]="item.icon"
+                  class="text-xl flex-shrink-0 transition-colors"
+                ></ng-icon>
+              }
+
+              <span
+                class="whitespace-nowrap transition-all duration-300 origin-left"
+                [class.opacity-0]="!isOpen()"
+                [class.w-0]="!isOpen()"
+                [class.translate-x-4]="!isOpen()"
+              >
+                {{ item.label }}
+              </span>
+
+              @if (!isOpen()) {
+                <div
+                  class="absolute left-14 bg-gray-900 text-white text-xs px-2 py-1 rounded border border-gray-700 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none"
+                >
+                  {{ item.label }}
+                </div>
+              }
+            </a>
+          }
+        </nav>
+      </div>
+    }
+  </div>
+
+  <div class="p-4 border-t border-gray-800 shrink-0">
+    <button
+      (click)="handleSettingsClick()"
+      class="flex items-center gap-3 w-full p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+    >
+      <ng-icon name="lucideSettings" class="text-xl shrink-0"></ng-icon>
+      <span
+        class="whitespace-nowrap transition-all duration-300 origin-left"
+        [class.opacity-0]="!isOpen()"
+        [class.w-0]="!isOpen()"
+      >
+        設定
+      </span>
+    </button>
+  </div>
+</aside>

@@ -21,10 +21,10 @@
 
 ## 📦 Available Components (可用組件)
 
-| Component | Import Path | Status |
-|-----------|------------|--------|
-| Button | `@guan-ring/ui/button` | ✅ Available |
-| Input | `@guan-ring/ui/input` | ✅ Available |
+| Component | Import Path            | Status       |
+| --------- | ---------------------- | ------------ |
+| Button    | `@guan-ring/ui/button` | ✅ Available |
+| Input     | `@guan-ring/ui/input`  | ✅ Available |
 
 > 更多組件持續開發中... More components coming soon...
 

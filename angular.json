@@ -30,6 +30,15 @@
           "options": {
             "tsConfig": "projects/ui-components/tsconfig.spec.json"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ui-components/**/*.ts",
+              "projects/ui-components/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -51,9 +60,7 @@
                 "input": "projects/design-system-docs/public"
               }
             ],
-            "styles": [
-              "projects/design-system-docs/src/styles.css"
-            ]
+            "styles": ["projects/design-system-docs/src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -93,6 +100,15 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/design-system-docs/**/*.ts",
+              "projects/design-system-docs/**/*.html"
+            ]
+          }
         }
       }
     }
