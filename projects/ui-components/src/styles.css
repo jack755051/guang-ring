@@ -1,0 +1,59 @@
+/* 1. 引入 Tailwind 核心 */
+@import 'tailwindcss';
+
+/* 2. 定義你的設計系統變數 (Theme) */
+@theme {
+  /* 語意化顏色 */
+
+  /* --- 1. 核心灰階 (Base Neutrals) --- */
+
+  /* 使用帶藍色調的冷灰，比純黑白更有質感 */
+  --color-gray-50: #f8fafc; /* 近乎白，用於高亮文字 */
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1; /* 停用狀態邊框 */
+  --color-gray-400: #94a3b8; /* 次要文字 */
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155; /* 邊框、分隔線 */
+  --color-gray-800: #1e293b; /* 卡片背景 */
+  --color-gray-900: #0f172a; /* 頁面背景 */
+  --color-gray-950: #020617; /* 深邃黑洞，用於最底層背景 */
+
+  /* --- 2. 品牌霓虹色 (Brand Neons) --- */
+
+  /* Primary: Cyber Cyan (全像投影藍) */
+  --color-primary-50: #ecfeff;
+  --color-primary-100: #cffafe;
+  --color-primary-200: #a5f3fc;
+  --color-primary-300: #67e8f9;
+  --color-primary-400: #22d3ee;
+  --color-primary-500: #06b6d4;
+  --color-primary: #00f3ff; /* ✨ 主色：核心發光色 */
+  --color-primary-600: #0891b2;
+  --color-primary-700: #0e7490;
+  --color-primary-800: #155e75;
+  --color-primary-900: #164e63;
+
+  /* Secondary: Synthwave Pink (合成波粉) */
+  --color-secondary-50: #fdf2f8;
+  --color-secondary: #ff00ff; /* ✨ 次色：高對比強調 */
+  --color-secondary-900: #831843;
+
+  /* --- 3. 功能語意色 (Functional) --- */
+
+  /* Success: Matrix Green (矩陣綠 - 比一般綠色更螢光) */
+  --color-success: #00ff9d;
+  --color-success-bg: rgba(0, 255, 157, 0.1);
+
+  /* Warning: Acid Yellow (酸性黃) */
+  --color-warning: #fcee0a;
+
+  /* Error: System Red (系統紅) */
+  --color-error: #ff2a6d;
+
+  /* --- 4. 特效定義 (可選) --- */
+  /* 賽博龐克必備的霓虹光暈陰影 */
+  --shadow-neon-blue: 0 0 5px #00f3ff, 0 0 10px #00f3ff, 0 0 20px rgba(0, 243, 255, 0.5);
+  --shadow-neon-pink: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px rgba(255, 0, 255, 0.5);
+}

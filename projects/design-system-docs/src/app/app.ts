@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+// 引入頁面
+
 // 引入組件
 import { Button } from '@guan-ring/ui/button';
 // 引入型別
@@ -9,7 +11,7 @@ import { provideIcons } from '@ng-icons/core';
 import { lucideSettings, lucideUser, lucideLoader2 } from '@ng-icons/lucide';
 
 @Component({
-  selector: 'gr-root',
+  selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, Button],
   // 註冊你想在這個 App 裡使用的 Icon
